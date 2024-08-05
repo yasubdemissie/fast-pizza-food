@@ -1,3 +1,4 @@
+import { useNavigation } from "react-router-dom";
 import { formatCurrency } from "../../utils/helpers";
 import propTypes from "prop-types";
 
@@ -19,12 +20,7 @@ function MenuItem({ pizza }) {
 }
 
 MenuItem.propTypes = {
-  id: propTypes.number.isRequired,
-  name: propTypes.string.isRequired,
-  unitPrice: propTypes.number,
-  ingredients: propTypes.arrayOf(propTypes.string),
-  soldOut: propTypes.bool,
-  imageUrl: propTypes.string,
+  pizza: propTypes.object,
 };
 
 export default MenuItem;
