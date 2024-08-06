@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Form, useActionData, useNavigation } from 'react-router-dom';
+import Button from '../../ui/Button';
 
 // https://uibakery.io/regex-library/phone-number
 
@@ -81,12 +82,10 @@ function CreateOrder() {
         </div>
 
         <div>
-          <button
-            disabled={isSubmitting}
-            className="m-2 rounded-full bg-yellow-300 px-3 py-2 font-semibold tracking-wide transition-colors duration-300 hover:bg-yellow-400 focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-1 disabled:cursor-not-allowed"
-          >
+          <Button
+            disabled={isSubmitting}>
             {isSubmitting ? 'sending data' : 'Order now'}
-          </button>
+          </Button>
         </div>
       </Form>
     </div>

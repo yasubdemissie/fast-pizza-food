@@ -4,12 +4,11 @@
 
 @layer components {
   .input {
-    @apply w-full rounded-full border border-yellow-100
-     bg-yellow-50 px-4 py-1 
+    @apply w-full rounded-full border border-stone-200
+     bg-stone-50 px-4 py-1 sm:py-4 sm:px-6 text-xl italic
     focus:outline-none focus:ring focus:ring-yellow-200;
   }
-}
-
+  
 /* https://dev.to/afif/i-made-100-css-loaders-for-your-next-project-4eje */
 .loader {
   width: 45px;
@@ -48,4 +47,5 @@
       50% 50%,
       100% 100%;
   }
+}
 }
