@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 function LinkButton({ to, children }) {
   const navigate = useNavigate();
 
-  const className = 'text-blue-500 hover:text-blue-700 hover:underline';
+  const className = 'text-blue-500 hover:text-blue-700 hover:underline text-xs sm:text-base';
 
   if (to === '-1')
     return (
