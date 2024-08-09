@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import PropTypes from "prop-types";
+import propTypes from "prop-types";
 
 function LinkButton({ to, children }) {
   const navigate = useNavigate();
@@ -19,9 +19,9 @@ function LinkButton({ to, children }) {
   );
 }
 
-LinkButton.PropTypes = {
-  to: PropTypes.string,
-  children: PropTypes.arrayOf(PropTypes.string),
+LinkButton.propTypes = {
+  to: propTypes.string,
+  children: propTypes.node,
 };
 
 export default LinkButton;

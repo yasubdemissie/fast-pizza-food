@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Form, useActionData, useNavigation } from 'react-router-dom';
 import Button from '../../ui/Button';
+import { useSelector } from 'react-redux';
 
 // https://uibakery.io/regex-library/phone-number
 
@@ -32,36 +33,48 @@ function CreateOrder() {
   // const [withPriority, setWithPriority] = useState(false);
   const navigation = useNavigation();
   const error = useActionData();
-
+  const Name = useSelector((state) => state.userReducer.userName);
   const isSubmitting = navigation.state === 'submitting';
   const cart = fakeCart;
 
   return (
     <div className="mx-4">
-      <h2 className='font-semibold mb-5 italic'>Ready to order? Let's go!</h2>
+      <h2 className="mb-5 font-semibold italic">Ready to order? Let's go!</h2>
 
       <Form method="POST">
-        <div className="text-xs my-3 sm:flex grow items-center  sm:text-lg">
-          <label className='sm:basis-40'>First Name</label>
-          <input className="input w-full sm:w-auto" type="text" name="customer" required />
+        <div className="my-3 grow items-center text-xs sm:flex sm:text-lg">
+          <label className="sm:basis-40">First Name</label>
+          <input
+            className="input w-full sm:w-auto"
+            type="text"
+            name="customer"
+            defaultValue={Name}
+            required
+          />
         </div>
 
-        <div className="text-xs my-3 sm:flex items-center  sm:text-lg">
-          <label className='sm:basis-40'>Phone number</label>
+        <div className="my-3 items-center text-xs sm:flex sm:text-lg">
+          <label className="sm:basis-40">Phone number</label>
           <div>
             <input className="input w-full" type="tel" name="phone" required />
-            <p className='bg-red-100 rounded-lg p-2 text-xs my-1 text-red-500'>{error?.phone}</p>
+            
+              {error?.phone ? <p className="my-1 rounded-lg bg-red-100 p-2 text-xs text-red-500">{error?.phone }</p> : ""}
           </div>
         </div>
 
-        <div className="text-xs my-3 sm:flex items-center  sm:text-lg">
-          <label className='sm:basis-40'>Address</label>
+        <div className="my-3 items-center text-xs sm:flex sm:text-lg">
+          <label className="sm:basis-40">Address</label>
           <div>
-            <input className="input w-full" type="text" name="address" required />
+            <input
+              className="input w-full"
+              type="text"
+              name="address"
+              required
+            />
           </div>
         </div>
 
-        <div className='flex gap-5 my-6'>
+        <div className="my-6 flex gap-5">
           <input
             type="checkbox"
             name="priority"
@@ -70,7 +83,9 @@ function CreateOrder() {
             // value={withPriority}
             // onChange={(e) => setWithPriority(e.target.checked)}
           />
-          <label className='text-xs' htmlFor="priority">Want to yo give your order priority?</label>
+          <label className="text-xs" htmlFor="priority">
+            Want to yo give your order priority?
+          </label>
         </div>
         <div>
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />

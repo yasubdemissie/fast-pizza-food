@@ -1,5 +1,6 @@
 import Button from "../../ui/Button";
 import { formatCurrency } from "../../utils/helpers";
+import propTypes from "prop-types";
 
 function CartItem({ item }) {
   const { pizzaId, name, quantity, totalPrice } = item;
@@ -15,6 +16,10 @@ function CartItem({ item }) {
       </div>
     </li>
   );
+}
+
+CartItem.propTypes = {
+item: propTypes.object,
 }
 
 export default CartItem;
