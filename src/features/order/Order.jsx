@@ -1,5 +1,5 @@
 // Test ID: IIDSAT
-
+import OrderItem from "./OrderItem";
 import { useLoaderData } from "react-router-dom";
 import {
   calcMinutesLeft,
@@ -22,18 +22,18 @@ function Order() {
   const deliveryIn = calcMinutesLeft(estimatedDelivery);
 
   return (
-    <div>
-      <div>
-        <h2>Status</h2>
+    <div className="space-y-5 m-3">
+      <div className="flex gap-4 flex-wrap justify-between">
+        <h2 className="font-bold">Order {id} Status</h2>
 
-        <div>
-          {priority && <span>Priority</span>}
-          <span>{status} order</span>
+        <div className="space-x-2">
+          {priority && <span className="bg-red-500 px-3 py-1 rounded-full text-red-50">Priority</span>}
+          <span className="bg-green-500 px-3 py-1 rounded-full text-green-50">{status} order</span>
         </div>
       </div>
 
-      <div>
-        <p>
+      <div className="flex gap-4 flex-wrap justify-between bg-stone-200 py-2 px-4 rounded-md">
+        <p className="font-bold">
           {deliveryIn >= 0
             ? `Only ${calcMinutesLeft(estimatedDelivery)} minutes left 😃`
             : "Order should have arrived"}
@@ -41,10 +41,14 @@ function Order() {
         <p>(Estimated delivery: {formatDate(estimatedDelivery)})</p>
       </div>
 
-      <div>
+      <ul className="divide-y mx-2 my-5 divide-stone-400 border-b border-t space-y-1">
+        {cart.map(item => <OrderItem item={item} key={item.id} />)}
+      </ul>
+
+      <div className="bg-stone-200 py-2 px-4 rounded-md space-y-5">
         <p>Price pizza: {formatCurrency(orderPrice)}</p>
         {priority && <p>Price priority: {formatCurrency(priorityPrice)}</p>}
-        <p>To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}</p>
+        <p className="font-bol">To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}</p>
       </div>
     </div>
   );
