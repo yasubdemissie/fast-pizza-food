@@ -1,18 +1,21 @@
 import { useNavigation } from 'react-router-dom';
 import { formatCurrency } from '../../utils/helpers';
 import Button from '../../ui/Button';
+import DeleteItem from '../cart/DeleteItem';
 import propTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { addItem } from '../cart/CartSlice';
+import { addItem, getItemById } from '../cart/CartSlice';
 
 function MenuItem({ pizza }) {
   const dispatch = useDispatch();
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
-  // const data = useSelector(state => state.cartReducer.cart);
+  const data = useSelector(getItemById(id));
 
-  function handleAddItem({id: pizzaId, name, unitPrice}) {
-    console.log('id ' + pizzaId, name, unitPrice);
-    dispatch(addItem({pizzaId, name, unitPrice, quantity: 1, totalPrice: unitPrice}));
+  function handleAddItem({ id: pizzaId, name, unitPrice }) {
+    dispatch(
+      addItem({ pizzaId, name, unitPrice, quantity: 1, totalPrice: unitPrice }),
+    );
+    console.log(data);
   }
 
   return (
@@ -31,7 +34,9 @@ function MenuItem({ pizza }) {
           ) : (
             <p className="mt-2">Sold out</p>
           )}
-          {!soldOut && (
+          {!soldOut && data > 0 ? (
+            <DeleteItem id={id} />
+          ) : (!soldOut &&
             <Button type="small" item={pizza} task={handleAddItem}>
               add
             </Button>
