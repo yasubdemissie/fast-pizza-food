@@ -13,7 +13,7 @@ export async function CreateOrderAction({ request }) {
 
   const order = {
     ...data,
-    priority: data.priority === "on",
+    priority: data.priority === "true",
     cart: JSON.parse(data.cart),
   };
 

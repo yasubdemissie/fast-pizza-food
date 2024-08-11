@@ -15,13 +15,12 @@ function MenuItem({ pizza }) {
     dispatch(
       addItem({ pizzaId, name, unitPrice, quantity: 1, totalPrice: unitPrice }),
     );
-    console.log(data);
   }
 
   return (
-    <li className="flex space-x-2 pt-2 text-[8px] transition-all duration-500 hover:scale-105 hover:bg-yellow-50 sm:text-base">
+    <li className="flex border rounded-lg mb-3 space-x-2 text-[8px] transition-all duration-500 hover:scale-105 hover:bg-yellow-50 sm:text-base">
       <img
-        className={`my-auto h-14 sm:h-24 ${soldOut ? 'grayscale' : ''}`}
+        className={`my-auto rounded-lg h-14 sm:h-24 ${soldOut ? 'grayscale' : ''}`}
         src={imageUrl}
         alt={name}
       />

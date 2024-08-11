@@ -8,8 +8,8 @@ function Menu() {
   // console.log(menu);
   return (
     <>
-      <h1>Menu</h1>
-      <ul className="divide-y divide-stone-200 px-2" >
+      <h1 className='font-medium mx-2'>Menu</h1>
+      <ul className="px-4" >
         {menu.map((pizza) => (
           <MenuItem key={pizza.id} pizza={pizza} />
         ))}

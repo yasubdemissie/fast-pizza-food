@@ -2,40 +2,23 @@ import { useState } from 'react';
 import { Form, useActionData, useNavigation } from 'react-router-dom';
 import Button from '../../ui/Button';
 import { useSelector } from 'react-redux';
+import { getCart, getTotalPrice } from '../cart/CartSlice';
+import { formatCurrency } from '../../utils/helpers';
+import EmptyCart from "../cart/EmptyCart";
 
 // https://uibakery.io/regex-library/phone-number
 
-const fakeCart = [
-  {
-    pizzaId: 12,
-    name: 'Mediterranean',
-    quantity: 2,
-    unitPrice: 16,
-    totalPrice: 32,
-  },
-  {
-    pizzaId: 6,
-    name: 'Vegetale',
-    quantity: 1,
-    unitPrice: 13,
-    totalPrice: 13,
-  },
-  {
-    pizzaId: 11,
-    name: 'Spinach and Mushroom',
-    quantity: 1,
-    unitPrice: 15,
-    totalPrice: 15,
-  },
-];
-
 function CreateOrder() {
-  // const [withPriority, setWithPriority] = useState(false);
+  // const dispatch = useDispatch();
+  const [withPriority, setWithPriority] = useState(false);
   const navigation = useNavigation();
   const error = useActionData();
   const Name = useSelector((state) => state.userReducer.userName);
   const isSubmitting = navigation.state === 'submitting';
-  const cart = fakeCart;
+  const cart = useSelector(getCart);
+  const price = useSelector(getTotalPrice);
+  
+  if (cart.length === 0) return <EmptyCart />;
 
   return (
     <div className="mx-4">
@@ -80,10 +63,10 @@ function CreateOrder() {
             name="priority"
             id="priority"
             className="h-6 w-6 accent-yellow-300 focus:outline-none focus:ring focus:ring-yellow-200 focus:ring-offset-2"
-            // value={withPriority}
-            // onChange={(e) => setWithPriority(e.target.checked)}
+            value={withPriority}
+            onChange={(e) => setWithPriority(e.target.checked)}
           />
-          <label className="text-xs" htmlFor="priority">
+          <label className="text-xs sm:text-base" htmlFor="priority">
             Want to yo give your order priority?
           </label>
         </div>
@@ -93,7 +76,7 @@ function CreateOrder() {
 
         <div>
           <Button disabled={isSubmitting}>
-            {isSubmitting ? 'sending data' : 'Order now'}
+            {isSubmitting ? 'orderig pizza...' : `Order now with ${formatCurrency(withPriority ? price * 0.2 + price : price)}`}
           </Button>
         </div>
       </Form>

@@ -4,8 +4,8 @@
 
 @layer components {
   .input {
-    @apply rounded-full border border-stone-200
-     bg-stone-50 px-4 py-1 sm:py-4 sm:px-6 text-xl italic
+    @apply rounded-full border border-stone-200 text-xs
+     bg-stone-50 px-4 py-1 sm:w-full sm:py-4 sm:px-6 sm:text-xl italic
     focus:outline-none focus:ring focus:ring-yellow-200;
   }
   
