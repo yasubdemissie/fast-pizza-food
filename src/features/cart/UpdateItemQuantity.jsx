@@ -14,9 +14,9 @@ function UpdateItemQuantity({id, children}) {
         console.log(id);
     }
     return (
-        <div className="flex gap-3 mx-6">
+        <div className="flex gap-2 sm:gap-3 mx-2 sm:mx-6">
             <Button type="change" task={handleDecrease} item={id}>-</Button>
-            <span className="pt-5 font-medium sm:font-semibold lg:font-extrabold">{children}</span>
+            <span className="pt-3 sm:pt-5 font-medium sm:font-semibold lg:font-extrabold">{children}</span>
             <Button type="change" task={handleIncrease} item={id}>+</Button>
         </div>
     )

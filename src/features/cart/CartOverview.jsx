@@ -13,7 +13,7 @@ function CartOverview() {
         <span>{cartLength} pizzas</span>
         <span>${totalPrice}</span>
       </p>
-      <Link to='/cart' >Open cart &rarr;</Link>
+      <Link to='/cart' ><span className="lg:text-2xl">🛒</span>Open cart &rarr;</Link>
     </div>
   );
 }

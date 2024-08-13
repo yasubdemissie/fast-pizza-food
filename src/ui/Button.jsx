@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 function Button({ children, disabled, to, type, task, item }) {
-  const className = `${`mt-2 mb-1 rounded-full bg-yellow-300 sm:font-semibold ${type === "change" ? "px-[10px] sm:px-7" : "" } 
+  const className = `${`mt-2 mb-1 rounded-full bg-yellow-300 sm:font-semibold ${type === "change" ? "px-[8px] sm:px-[16px] sm:py-0" : "" } 
    sm:tracking-wide transition-colors duration-300 hover:bg-yellow-400 text-stone-800
     focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-1
      disabled:cursor-not-allowed sm:px-8 sm:py-3 

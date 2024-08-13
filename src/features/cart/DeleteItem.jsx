@@ -11,7 +11,7 @@ function DeleteItem({id}) {
   }
   return (
     <Button type="small" task={handleDelete} item={id}>
-      delete
+      remove
     </Button>
   );
 }

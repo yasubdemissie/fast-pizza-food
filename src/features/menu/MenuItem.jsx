@@ -18,7 +18,7 @@ function MenuItem({ pizza }) {
   }
 
   return (
-    <li className="flex border rounded-lg mb-3 space-x-2 text-[8px] transition-all duration-500 hover:scale-105 hover:bg-yellow-50 sm:text-base">
+    <li className="flex border rounded-lg mb-3 space-x-2 text-[8px] transition-all duration-500 hover:scale-[1.02] hover:bg-yellow-50 sm:text-base">
       <img
         className={`my-auto rounded-lg h-14 sm:h-24 ${soldOut ? 'grayscale' : ''}`}
         src={imageUrl}

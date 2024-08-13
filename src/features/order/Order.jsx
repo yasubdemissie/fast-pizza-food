@@ -6,9 +6,13 @@ import {
   formatCurrency,
   formatDate,
 } from "../../utils/helpers";
+import { useDispatch } from "react-redux";
+import { clearCart } from "../cart/CartSlice";
 
 function Order() {
   const order = useLoaderData();
+  const dispatch = useDispatch();
+  dispatch(clearCart());
   // Everyone can search for all orders, so for privacy reasons we're gonna gonna exclude names or address, these are only for the restaurant staff
   const {
     id,
@@ -25,9 +29,9 @@ function Order() {
   return (
     <div className="space-y-5 m-3">
       <div className="flex gap-4 flex-wrap justify-between">
-        <h2 className="font-medium sm:font-bold">Order ID: <span className="italic underline">{id}</span> Status</h2>
+        <h2 className="font-xs text-xs sm:text-lg sm:font-bold">Order ID: <span className="italic underline">{id}</span> Status</h2>
 
-        <div className="space-x-2  text-xs sm:text-base lg:text-xl">
+        <div className="space-x-2 text-[10px] sm:text-base lg:text-xl">
           {priority && <span className="bg-red-500 px-3 py-1 rounded-full text-red-50">Priority</span>}
           <span className="bg-green-500 px-3 py-1 rounded-full text-green-50">{status} order</span>
         </div>
